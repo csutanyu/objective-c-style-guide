@@ -1,10 +1,10 @@
 # mophie Objective-C Style Guide [Draft]
 
-This style guide outlines the mophie's Objective-C coding conventions.
+This style guide outlines mophie's Objective-C coding conventions.
 
 ## Introduction
 
-This guide was created to help facilitate readability and encourage best-practices for mophie employees when they are writing Objective-C code. This document is currently a draft. Employees and community members are encouraged to submit their suggestions via pull requests or tickets on GitHub.
+This guide was created to help facilitate code readability and encourage best-practices for mophie employees when they are writing Objective-C code. This document is currently a draft. Employees and community members are encouraged to submit their suggestions via pull requests or tickets on GitHub.
 
 ## Credits
 
@@ -61,10 +61,10 @@ Use `#pragma mark -` to categorize methods in functional groupings and protocol/
 #pragma mark - Object Control
 
 - (id)customProperty {}
+- (void)setCustomProperty:(id)value {}
 - (NSString *)description {}
 - (void)didReceiveMemoryWarning {}
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {}
-- (void)setCustomProperty:(id)value {}
 
 
 #pragma mark - View Lifecycle
@@ -89,25 +89,30 @@ Use `#pragma mark -` to categorize methods in functional groupings and protocol/
 ## Spacing
 
 * Indent using 4 spaces. Never indent with tabs. Be sure to set this preference in Xcode.
-* Method braces and other braces (`if`/`else`/`switch`/`while` etc.) always open on the same line as the statement but close on a new line.
+* Method braces should start on the next line, while all other braces (`if`/`else`/`switch`/`while` etc.) always open on the same line as the statement but close on a new line.
 
 **Preferred:**
 ```objc
-if (user.isHappy) {
-    //Do something
-} else {
-    //Do something else
+- (void)checkIfHappy
+{
+    if (user.isHappy) {
+        //Do something
+    } else {
+        //Do something else
+    }
 }
 ```
 
 **Not Preferred:**
 ```objc
-if (user.isHappy)
-{
-    //Do something
-}
-else {
-    //Do something else
+- (void)checkIfHappy {
+    if (user.isHappy)
+    {
+        //Do something
+    }
+    else {
+        //Do something else
+    }
 }
 ```
 
@@ -269,7 +274,6 @@ BOOL isReady;
 id object;
 NSUInteger index;
 CGImageRef imageRef = NULL;
-
 ```
 
 **Not Preferred:**
@@ -310,7 +314,7 @@ Property attributes should be explicitly listed, even when not technically requi
 
 Dot syntax is purely a convenient wrapper around accessor method calls. When you use dot syntax, the property is still accessed or changed using getter and setter methods.  Read more [here](https://developer.apple.com/library/ios/documentation/cocoa/conceptual/ProgrammingWithObjectiveC/EncapsulatingData/EncapsulatingData.html)
 
-Dot-notation should **always** be used for accessing and mutating properties, as it makes code more concise. Bracket notation is preferred in all other instances. Never use dot notation to call or execute a method.
+Dot-notation should **always** be used for accessing and mutating properties, as it makes code more concise. Bracket notation is preferred in all other instances. **Never** use dot notation to invoke method.
 
 **Preferred:**
 ```objc
@@ -612,7 +616,7 @@ When coding with conditionals, the left hand margin of the code should be the "g
 }
 ```
 
-## Error handling
+## Error Handling
 
 When methods return an error parameter by reference, switch on the returned value, not the error variable.
 
