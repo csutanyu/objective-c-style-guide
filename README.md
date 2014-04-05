@@ -289,7 +289,7 @@ CGImageRef imageRef; // May actually end up pointing to something if not assigne
 
 ## Property Attributes
 
-Property attributes should be explicitly listed, even when not technically required by the compiler.  The order of properties should be storage, atomicity, `readonly` (if applicable), and finally `getter=`. This odrder is consistent with the automatically generated code when connecting UI elements from Interface Builder.
+Property attributes should be explicitly listed, even when not technically required by the compiler.  The order of properties should be storage, atomicity, `readonly` (if applicable), and finally `getter=`. This order is consistent with the automatically generated code when connecting UI elements from Interface Builder.
 
 **Preferred:**
 
@@ -312,7 +312,7 @@ Property attributes should be explicitly listed, even when not technically requi
 
 ## Dot-Notation Syntax
 
-Dot syntax is purely a convenient wrapper around accessor method calls. When you use dot syntax, the property is still accessed or changed using getter and setter methods.  Read more [here](https://developer.apple.com/library/ios/documentation/cocoa/conceptual/ProgrammingWithObjectiveC/EncapsulatingData/EncapsulatingData.html)
+Dot syntax is purely a convenient wrapper around accessor method calls. When you use dot syntax, the property is still accessed or changed using getter and setter methods.  Read more [here](https://developer.apple.com/library/ios/documentation/cocoa/conceptual/ProgrammingWithObjectiveC/EncapsulatingData/EncapsulatingData.html).
 
 Dot-notation should **always** be used for accessing and mutating properties, as it makes code more concise. Bracket notation is preferred in all other instances. **Never** use dot notation to invoke method.
 
@@ -532,7 +532,8 @@ result = a > b ? x = c > d ? c : d : y;
 Init methods should follow the convention provided by Apple's generated code template.  A return type of 'instancetype' should also be used instead of 'id'.
 
 ```objc
-- (instancetype)init {
+- (instancetype)init
+{
     self = [super init];
 
     if (self) {
